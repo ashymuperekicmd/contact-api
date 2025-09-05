@@ -1,22 +1,24 @@
 {
   "name": "contact-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A REST API for managing contacts with MongoDB",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ashymuperekicmd/contact-api.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["contacts", "api", "mongodb", "rest"],
+  "author": "Your Name",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ashymuperekicmd/contact-api/issues"
   },
   "homepage": "https://github.com/ashymuperekicmd/contact-api#readme",
-  "description": "",
   "dependencies": {
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
