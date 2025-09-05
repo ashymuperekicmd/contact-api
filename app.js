@@ -1,10 +1,14 @@
-// app.js (simple formatted version)
+// app.js - UPDATED VERSION
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 
-// Load environment variables
+// Load environment variables FIRST THING
 dotenv.config();
+
+// Debug: Check if environment variables are loaded
+console.log('MONGODB_URI:', process.env.MONGODB_URI ? 'Loaded successfully' : 'NOT LOADED');
+console.log('PORT:', process.env.PORT);
 
 // Connect to database
 connectDB();
@@ -42,19 +46,9 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log('╔═════════════════════════════════════╗');
-  console.log('║            Contacts API             ║');
-  console.log('╠═════════════════════════════════════╣');
-  console.log('║ 🚀 Server is running!               ║');
-  console.log(`║ 📍 http://localhost:${PORT}           ║`);
-  console.log('╠═════════════════════════════════════╣');
-  console.log('║             ENDPOINTS               ║');
-  console.log('╠═════════════════════════════════════╣');
-  console.log(`║ GET  /contacts                      ║`);
-  console.log('║     - Get all contacts              ║');
-  console.log('║ GET  /contacts/:id                  ║');
-  console.log('║     - Get contact by ID            ║');
-  console.log('║ GET  /                             ║');
-  console.log('║     - API info                     ║');
-  console.log('╚═════════════════════════════════════╝');
+  console.log('=========================================');
+  console.log('🚀 Contacts API Server is running!');
+  console.log('=========================================');
+  console.log(`📍 Local: http://localhost:${PORT}`);
+  console.log('=========================================');
 });
