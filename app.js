@@ -2,6 +2,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
+const { swaggerUi, specs } = require('./swagger');
 
 // Load environment variables FIRST THING
 dotenv.config();
@@ -21,6 +22,9 @@ app.use(express.json());
 // Routes
 app.use('/contacts', require('./routes/contacts'));
 
+// Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 // Basic route
 app.get('/', (req, res) => {
   res.json({ 
@@ -28,6 +32,10 @@ app.get('/', (req, res) => {
     endpoints: {
       getAllContacts: 'GET /contacts',
       getContactById: 'GET /contacts/:id',
+      createContact: 'POST /contacts',
+      updateContact: 'PUT /contacts/:id',
+      deleteContact: 'DELETE /contacts/:id',
+      apiDocs: 'GET /api-docs'
     }
   });
 });
@@ -50,5 +58,6 @@ app.listen(PORT, () => {
   console.log('🚀 Contacts API Server is running!');
   console.log('=========================================');
   console.log(`📍 Local: http://localhost:${PORT}`);
+  console.log(`📚 API Docs: http://localhost:${PORT}/api-docs`);
   console.log('=========================================');
 });

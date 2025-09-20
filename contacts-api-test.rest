@@ -1,0 +1,35 @@
+# contacts-api-test.rest
+@baseUrl = http://localhost:5000
+
+### Get all contacts
+GET {{baseUrl}}/contacts
+
+### Get contact by ID
+GET {{baseUrl}}/contacts/{{$timestamp}}
+
+### Create a new contact
+POST {{baseUrl}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Alice",
+  "lastName": "Johnson",
+  "email": "alice.johnson@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "1988-03-15"
+}
+
+### Update a contact
+PUT {{baseUrl}}/contacts/{{contactId}}
+Content-Type: application/json
+
+{
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "email": "alice.smith@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1988-03-15"
+}
+
+### Delete a contact
+DELETE {{baseUrl}}/contacts/{{contactId}}
